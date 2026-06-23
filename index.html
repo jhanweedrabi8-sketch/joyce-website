@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyce Andrea C. Sayson - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-pink: #FF69B4;
+            --light-pink: #FFB6D9;
+            --pale-pink: #FFF0F5;
+            --dark-pink: #DB3A70;
+            --rose-gold: #F4A460;
+            --soft-purple: #DDA0DD;
+            --white: #FFFFFF;
+            --light-gray: #F8F5F7;
+            --text-dark: #5A4A6E;
+            --text-light: #8B7B99;
+            --accent-border: #FFD4E5;
+        }
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--pale-pink) 0%, #FFF5FA 100%);
+            overflow-x: hidden;
+        }
+        nav {
+            position: fixed; top: 0; width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 2px solid var(--light-pink);
+            box-shadow: 0 2px 12px rgba(255, 105, 180, 0.1);
+        }
+        nav .container {
+            max-width: 1200px; margin: 0 auto; padding: 1rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem; font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-pink), var(--soft-purple));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; text-decoration: none; letter-spacing: -0.5px;
+        }
+        nav ul { display: flex; list-style: none; gap: 2.5rem; flex-wrap: wrap; }
+        nav a {
+            text-decoration: none; color: var(--text-light); font-weight: 600;
+            font-size: 0.95rem; transition: all 0.3s ease; position: relative;
+        }
+        nav a:hover { color: var(--primary-pink); }
+        nav a::after {
+            content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px;
+            background: linear-gradient(90deg, var(--primary-pink), var(--soft-purple));
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after { width: 100%; }
+        
+        .hero {
+            margin-top: 60px; padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--primary-pink) 0%, var(--soft-purple) 100%);
+            color: white; text-align: center; position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: '✨'; position: absolute; font-size: 15rem; opacity: 0.1;
+            top: -50px; left: -50px; animation: float 6s ease-in-out infinite;
+        }
+        .hero::after {
+            content: '💕'; position: absolute; font-size: 12rem; opacity: 0.1;
+            bottom: -30px; right: -30px; animation: float 8s ease-in-out infinite reverse;
+        }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(20px); } }
+        .hero .container { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; font-weight: 800; letter-spacing: -1px; font-family: 'Playfair Display', serif; }
+        .hero .tagline { font-size: 1.3rem; color: #FFE0EC; margin-bottom: 1.5rem; font-weight: 500; font-style: italic; }
+        .hero .description { font-size: 1.1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.95); margin-bottom: 2rem; }
+        .cta-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: all 0.3s ease; border: 2px solid transparent; cursor: pointer; }
+        .btn-primary { background-color: var(--white); color: var(--primary-pink); }
+        .btn-primary:hover { background-color: transparent; border-color: white; color: white; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3); }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        section { padding: 5rem 2rem; }
+        section h2 { font-size: 2.8rem; color: var(--primary-pink); margin-bottom: 0.5rem; font-family: 'Playfair Display', serif; font-weight: 700; }
+        section .subtitle { color: var(--soft-purple); font-size: 0.95rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 1.5rem; }
+        .section-divider { height: 4px; width: 60px; background: linear-gradient(90deg, var(--primary-pink), var(--soft-purple)); margin: 1rem 0 2rem 0; border-radius: 2px; }
+        
+        #journey { background-color: var(--white); }
+        .journey-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 2rem; }
+        .journey-image { position: relative; }
+        .journey-image img { width: 100%; border-radius: 20px; box-shadow: 0 15px 40px rgba(255, 105, 180, 0.2); }
+        .journey-content h3 { color: var(--primary-pink); font-size: 1.8rem; margin-bottom: 1.5rem; font-family: 'Playfair Display', serif; }
+        .journey-content p { color: var(--text-light); font-size: 1.05rem; line-height: 1.9; margin-bottom: 1.5rem; }
+        .highlight-box { background: linear-gradient(135deg, var(--pale-pink), #FFF5FA); padding: 2rem; border-left: 5px solid var(--primary-pink); border-radius: 12px; margin-top: 2rem; }
+        .highlight-box strong { color: var(--primary-pink); }
+        
+        #about { background: linear-gradient(135deg, var(--pale-pink) 0%, #FFF5FA 100%); }
+        .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; margin-top: 2rem; margin-bottom: 3.5rem; }
+        .profile-image-frame { position: relative; width: 100%; max-width: 320px; margin: 0 auto; }
+        .image-frame { width: 100%; aspect-ratio: 3/4; background: linear-gradient(135deg, var(--pale-pink), #FFF0F5); border: 12px solid var(--primary-pink); border-radius: 20px; overflow: hidden; box-shadow: 0 12px 35px rgba(255, 105, 180, 0.25); position: relative; }
+        .image-frame.placeholder { display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #fff5fa 0%, #ffe0ec 100%); font-size: 3rem; }
+        .frame-accent { position: absolute; bottom: -15px; right: -15px; width: 100px; height: 100px; background: var(--rose-gold); border-radius: 50%; opacity: 0.3; z-index: -1; }
+        .about-text p { margin-bottom: 1.5rem; color: var(--text-light); font-size: 1.08rem; line-height: 1.9; }
+        .about-text p:last-child { margin-bottom: 0; }
+        .about-text strong { color: var(--primary-pink); font-weight: 700; }
+        
+        .about-highlights { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 1000px; margin: 0 auto; width: 100%; }
+        .highlight-item { padding: 1.8rem; background: var(--white); border-left: 5px solid var(--primary-pink); border-radius: 12px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 105, 180, 0.05); }
+        .highlight-item:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(255, 105, 180, 0.15); }
+        .highlight-item h4 { color: var(--primary-pink); margin-bottom: 0.7rem; font-size: 1.15rem; font-weight: 700; }
+        .highlight-item p { color: var(--text-light); font-size: 0.98rem; margin: 0; line-height: 1.6; }
+        
+        #gallery { background-color: var(--white); }
+        .gallery-carousel { position: relative; margin-top: 2rem; }
+        .gallery-track-wrapper { overflow: hidden; border-radius: 15px; }
+        .gallery-track { display: flex; gap: 2rem; transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1); cursor: grab; }
+        .gallery-track:active { cursor: grabbing; }
+        .gallery-item { position: relative; overflow: hidden; border-radius: 15px; box-shadow: 0 8px 25px rgba(255, 105, 180, 0.15); transition: transform 0.3s ease; cursor: pointer; flex: 0 0 calc((100% - 2rem * 4) / 5); min-width: 0; }
+        .gallery-item:hover { transform: translateY(-8px); }
+        .gallery-item img { width: 100%; height: 250px; object-fit: cover; display: block; pointer-events: none; -webkit-user-drag: none; }
+        .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); color: white; padding: 1.5rem; transform: translateY(100%); transition: transform 0.3s ease; }
+        .gallery-item:hover .gallery-caption { transform: translateY(0); }
+        .gallery-nav-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; border: none; background: linear-gradient(135deg, var(--primary-pink), var(--soft-purple)); color: white; font-size: 1.4rem; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 6px 18px rgba(255, 105, 180, 0.35); z-index: 10; transition: all 0.25s ease; }
+        .gallery-nav-btn:hover { transform: translateY(-50%) scale(1.1); }
+        .gallery-nav-btn.prev { left: -22px; }
+        .gallery-nav-btn.next { right: -22px; }
+        .gallery-nav-btn:disabled { opacity: 0.35; cursor: not-allowed; transform: translateY(-50%) scale(1); }
+        .gallery-dots { display: flex; justify-content: center; gap: 0.6rem; margin-top: 1.8rem; }
+        .gallery-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent-border); border: none; cursor: pointer; transition: all 0.25s ease; padding: 0; }
+        .gallery-dot.active { background: var(--primary-pink); width: 26px; border-radius: 6px; }
+        @media (max-width: 1024px) { .gallery-item { flex: 0 0 calc((100% - 2rem * 2) / 3); } }
+        @media (max-width: 700px) { .gallery-item { flex: 0 0 calc((100% - 1rem) / 2); } .gallery-track { gap: 1rem; } .gallery-nav-btn.prev { left: 4px; } .gallery-nav-btn.next { right: 4px; } }
+        @media (max-width: 460px) { .gallery-item { flex: 0 0 85%; } }
+        
+        #education { background: linear-gradient(135deg, var(--pale-pink) 0%, #FFF5FA 100%); }
+        .education-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; margin-top: 2rem; }
+        .education-card { background: var(--white); padding: 2.5rem; border-radius: 15px; border-top: 5px solid var(--primary-pink); box-shadow: 0 5px 20px rgba(255, 105, 180, 0.1); transition: all 0.3s ease; }
+        .education-card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(255, 105, 180, 0.2); }
+        .education-card h3 { color: var(--primary-pink); font-size: 1.35rem; margin-bottom: 0.7rem; font-family: 'Playfair Display', serif; font-weight: 700; }
+        .education-card .school { color: var(--soft-purple); font-weight: 700; margin-bottom: 1.2rem; font-size: 0.98rem; }
+        .education-card p { color: var(--text-light); font-size: 0.98rem; margin-bottom: 0.7rem; }
+        
+        #skills { background-color: var(--white); }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; margin-top: 2rem; }
+        .skill-category { background: linear-gradient(135deg, var(--primary-pink) 0%, var(--soft-purple) 100%); padding: 2.5rem; border-radius: 15px; color: white; box-shadow: 0 8px 25px rgba(255, 105, 180, 0.2); transition: all 0.3s ease; }
+        .skill-category:hover { transform: translateY(-5px); box-shadow: 0 12px 35px rgba(255, 105, 180, 0.3); }
+        .skill-category h3 { color: white; margin-bottom: 1.8rem; font-size: 1.3rem; font-weight: 700; }
+        .skill-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.8rem; }
+        .skill-item { background: rgba(255, 255, 255, 0.25); padding: 0.7rem 1.4rem; border-radius: 25px; font-size: 0.95rem; border: 1px solid rgba(255, 255, 255, 0.4); color: white; transition: all 0.3s ease; }
+        .skill-item:hover { background: rgba(255, 255, 255, 0.4); transform: scale(1.05); }
+        
+        #philosophy { background: linear-gradient(135deg, rgba(255, 105, 180, 0.08) 0%, rgba(221, 160, 221, 0.08) 100%); }
+        .philosophy-content { max-width: 900px; margin: 0 auto; background: var(--white); padding: 3.5rem; border-radius: 15px; border-left: 6px solid var(--primary-pink); box-shadow: 0 8px 30px rgba(255, 105, 180, 0.12); }
+        .philosophy-content p { color: var(--text-light); font-size: 1.12rem; line-height: 2; margin-bottom: 2rem; font-style: italic; }
+        .philosophy-content p:last-child { margin-bottom: 0; }
+        
+        #contact { background: linear-gradient(135deg, var(--primary-pink) 0%, var(--soft-purple) 100%); color: white; text-align: center; }
+        .contact-content { max-width: 600px; margin: 0 auto; }
+        .contact-content h2 { color: white; }
+        .contact-content p { font-size: 1.15rem; margin-bottom: 2rem; color: rgba(255, 255, 255, 0.95); }
+        .contact-links { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+        .contact-link { color: var(--white); text-decoration: none; font-weight: 700; transition: all 0.3s ease; padding: 0.8rem 1.8rem; background: rgba(255, 255, 255, 0.2); border-radius: 25px; border: 2px solid rgba(255, 255, 255, 0.4); }
+        .contact-link:hover { background: var(--white); color: var(--primary-pink); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3); }
+        
+        footer { background: linear-gradient(135deg, #DB3A70 0%, #C7297D 100%); color: rgba(255, 255, 255, 0.9); text-align: center; padding: 2rem; font-size: 0.95rem; }
+        
+        @media (max-width: 768px) {
+            nav ul { gap: 1.2rem; font-size: 0.9rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero .tagline { font-size: 1rem; }
+            .about-content, .journey-grid { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2rem; }
+            .about-highlights { grid-template-columns: 1fr; }
+            section h2 { font-size: 2rem; }
+            .cta-buttons { flex-direction: column; }
+            .btn { width: 100%; text-align: center; }
+            .contact-links { flex-direction: column; gap: 1rem; }
+            .philosophy-content { padding: 2rem; }
+        }
+        @media (max-width: 480px) {
+            nav .container { flex-direction: column; gap: 1rem; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 0.8rem; }
+            .hero { padding: 3rem 1rem; }
+            .hero h1 { font-size: 1.8rem; }
+            section { padding: 3rem 1rem; }
+            section h2 { font-size: 1.5rem; }
+        }
+        html { scroll-behavior: smooth; }
+        
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .modal.show { display: flex; align-items: center; justify-content: center; }
+        .modal-content { background-color: white; padding: 2rem; border-radius: 20px; max-width: 700px; width: 90%; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3); animation: slideUp 0.3s ease; position: relative; }
+        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .modal-close { position: absolute; top: 1rem; right: 1.5rem; background: none; border: none; font-size: 2rem; cursor: pointer; color: var(--primary-pink); transition: transform 0.2s ease; z-index: 100; }
+        .modal-close:hover { transform: scale(1.2); }
+        .modal-header { margin-bottom: 1.5rem; padding-top: 0.5rem; }
+        .modal-header h2 { color: var(--primary-pink); font-size: 2rem; margin-bottom: 0.5rem; font-family: 'Playfair Display', serif; }
+        .modal-header .tag { display: inline-block; background: linear-gradient(135deg, var(--primary-pink), var(--soft-purple)); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; }
+        
+        .modal-text { color: var(--text-light); font-size: 1.05rem; line-height: 1.8; min-height: 80px; margin-top: 0.5rem; }
+        .modal-text p { margin-bottom: 0; }
+        .modal-text strong { color: var(--primary-pink); }
+        
+        .modal-slider-container { position: relative; width: 100%; margin-bottom: 1rem; }
+        .modal-slider-track-wrapper { overflow: hidden; border-radius: 15px; box-shadow: 0 8px 25px rgba(255, 105, 180, 0.15); }
+        .modal-slider-track { display: flex; transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); width: 100%; }
+        .modal-slide { min-width: 100%; flex: 0 0 100%; }
+        .modal-slide img { width: 100%; height: 320px; object-fit: cover; display: block; }
+        .modal-slider-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 38px; height: 38px; border-radius: 50%; border: none; background: rgba(255, 105, 180, 0.85); color: white; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; transition: all 0.2s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+        .modal-slider-btn:hover { background: var(--dark-pink); transform: translateY(-50%) scale(1.05); }
+        .modal-slider-btn.prev { left: 12px; }
+        .modal-slider-btn.next { right: 12px; }
+        .modal-slider-dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 0.8rem; }
+        .modal-slider-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-border); border: none; cursor: pointer; transition: all 0.25s ease; padding: 0; }
+        .modal-slider-dot.active { background: var(--primary-pink); width: 20px; border-radius: 4px; }
+        @media (max-width: 768px) { .modal-slide img { height: 220px; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="#home" class="logo">🐰 Joyce Andrea</a>
+            <ul>
+                <li><a href="#journey">My Journey</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Memories</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Joyce Andrea C. Sayson</h1>
+            <p class="tagline">Future English Educator & Literary Enthusiasttt</p>
+            <p class="description">
+                A passionate first-year student pursuing a Bachelor of Secondary Education major in English,
+                committed to inspiring students through language, literature, and critical thinking.
+            </p>
+            <div class="cta-buttons">
+                <a href="#about" class="btn btn-primary">Learn More About Me</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="journey">
+        <div class="container">
+            <p class="subtitle">Introduction</p>
+            <h2>My Journey</h2>
+            <div class="section-divider"></div>
+            <div class="journey-grid">
+                <div class="journey-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'%3E%3Crect fill='%23FFB6D9' width='400' height='500'/%3E%3Ctext x='50%25' y='50%25' font-size='48' fill='%23fff' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3EYour Photo Here%3C/text%3E%3C/svg%3E" alt="Joyce Andrea">
+                </div>
+                <div class="journey-content">
+                    <h3>All About Joyce</h3>
+                    <p>
+                        Hello! My name is <strong>Joyce Andrea C. Sayson</strong>. I was born on <strong>September 10, 2007</strong>,
+                        and I grew up in the beautiful municipality of <strong>Matanao, Davao del Sur</strong>.
+                    </p>
+                    <p>
+                        I am the <strong>youngest in our family of four</strong>, and I share my educational journey with my older sister
+                        who also attends university. Growing up in a close-knit family has shaped my values and my passion for connecting with others.
+                    </p>
+                    <div class="highlight-box">
+                        <p>
+                            <strong>From Childhood Dreams to College Goals:</strong> My journey through education has been filled with
+                            curiosity and wonder. Now, as a first-year student, I'm actively working towards my dream of becoming
+                            a dedicated English teacher who can make a difference in students' lives.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <p class="subtitle">Who I Am</p>
+            <h2>About Me</h2>
+            <div class="section-divider"></div>
+            
+            <div class="about-content">
+                <div class="profile-image-frame">
+                    <div class="image-frame placeholder" id="imageFrame">📸</div>
+                    <div class="frame-accent"></div>
+                </div>
+                <div class="about-text">
+                    <p>
+                        I'm a first-year college student pursuing <strong>Bachelor of Secondary Education, Major in English</strong>.
+                        My passion for literature and language drives my commitment to becoming an inspiring educator.
+                    </p>
+                    <p>
+                        I believe that education is more than just textbooks and exams. It's about fostering critical thinking,
+                        nurturing creativity, and helping students discover their unique voice through language and literature.
+                    </p>
+                    <p>
+                        My teaching philosophy centers on creating inclusive, engaging classrooms where every student feels valued
+                        and empowered to express themselves. I'm dedicated to making literature come alive and showing students
+                        why the English language matters.
+                    </p>
+                </div>
+            </div>
+
+            <div class="about-highlights">
+                <div class="highlight-item">
+                    <h4>🎓 Current Academic Path</h4>
+                    <p>1st Year BS Secondary Education Major in English</p>
+                </div>
+                <div class="highlight-item">
+                    <h4>📚 Academic Focus</h4>
+                    <p>Literature analysis, English composition, educational methodology</p>
+                </div>
+                <div class="highlight-item">
+                    <h4>🎯 Career Goal</h4>
+                    <p>Inspiring high school students through meaningful literature instruction</p>
+                </div>
+                <div class="highlight-item">
+                    <h4>💡 Teaching Philosophy</h4>
+                    <p>Student-centered learning with emphasis on critical thinking and creativity</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="container">
+            <p class="subtitle">Moments</p>
+            <h2>Memories & More of Me</h2>
+            <div class="section-divider"></div>
+
+            <div class="gallery-carousel">
+                <button class="gallery-nav-btn prev" id="galleryPrev" aria-label="Previous">&#10094;</button>
+                <button class="gallery-nav-btn next" id="galleryNext" aria-label="Next">&#10095;</button>
+
+                <div class="gallery-track-wrapper">
+                    <div class="gallery-track" id="galleryTrack">
+                        <div class="gallery-item" onclick="openModal('childhood')">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23FFB6D9;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23FFD4E5;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g1)' width='300' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='72' text-anchor='middle' dominant-baseline='middle'%3E👶%3C/text%3E%3Ctext x='50%25' y='85%25' font-size='18' fill='%23666' text-anchor='middle'%3EChildhood Days%3C/text%3E%3C/svg%3E" alt="Childhood">
+                            <div class="gallery-caption"><p>Childhood memories from Matanao</p></div>
+                        </div>
+                        <div class="gallery-item" onclick="openModal('growing')">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Cdefs%3E%3ClinearGradient id='g2' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23DDA0DD;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23FFB6D9;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g2)' width='300' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='72' text-anchor='middle' dominant-baseline='middle'%3E👧%3C/text%3E%3Ctext x='50%25' y='85%25' font-size='18' fill='%23666' text-anchor='middle'%3EGrowing Up%3C/text%3E%3C/svg%3E" alt="Growing Up">
+                            <div class="gallery-caption"><p>School days and milestones</p></div>
+                        </div>
+                        <div class="gallery-item" onclick="openModal('academic')">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Cdefs%3E%3ClinearGradient id='g3' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23FFD4E5;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23FFF0F5;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g3)' width='300' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='72' text-anchor='middle' dominant-baseline='middle'%3E🎓%3C/text%3E%3Ctext x='50%25' y='85%25' font-size='18' fill='%23666' text-anchor='middle'%3EAcademic Journey%3C/text%3E%3C/svg%3E" alt="Education">
+                            <div class="gallery-caption"><p>Celebrating achievements</p></div>
+                        </div>
+                        <div class="gallery-item" onclick="openModal('learning')">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Cdefs%3E%3ClinearGradient id='g4' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23DB3A70;stop-opacity:0.2' /%3E%3Cstop offset='100%25' style='stop-color:%23FF69B4;stop-opacity:0.2' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g4)' width='300' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='72' text-anchor='middle' dominant-baseline='middle'%3E📚%3C/text%3E%3Ctext x='50%25' y='85%25' font-size='18' fill='%23666' text-anchor='middle'%3ELove of Learning%3C/text%3E%3C/svg%3E" alt="Learning">
+                            <div class="gallery-caption"><p>Passion for literature and education</p></div>
+                        </div>
+                        <div class="gallery-item" onclick="openModal('college')">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Cdefs%3E%3ClinearGradient id='g5' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23F4A460;stop-opacity:0.3' /%3E%3Cstop offset='100%25' style='stop-color:%23FFB6D9;stop-opacity:0.3' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g5)' width='300' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='72' text-anchor='middle' dominant-baseline='middle'%3E✨%3C/text%3E%3Ctext x='50%25' y='85%25' font-size='18' fill='%23666' text-anchor='middle'%3ECollege Days%3C/text%3E%3C/svg%3E" alt="College">
+                            <div class="gallery-caption"><p>Beginning my teaching journey</p></div>
+                        </div>
+                        <div class="gallery-item" onclick="openModal('family')">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Cdefs%3E%3ClinearGradient id='g6' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23DDA0DD;stop-opacity:0.2' /%3E%3Cstop offset='100%25' style='stop-color:%23FFC0CB;stop-opacity:0.2' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g6)' width='300' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='72' text-anchor='middle' dominant-baseline='middle'%3E❤️%3C/text%3E%3Ctext x='50%25' y='85%25' font-size='18' fill='%23666' text-anchor='middle'%3EFamily%3C/text%3E%3C/svg%3E" alt="Family">
+                            <div class="gallery-caption"><p>Family and loved ones</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-dots" id="galleryDots"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <p class="subtitle">Background</p>
+            <h2>Education</h2>
+            <div class="section-divider"></div>
+            <div class="education-grid">
+                <div class="education-card">
+                    <h3>Bachelor of Secondary Education</h3>
+                    <p class="school">Major in English</p>
+                    <p><strong>Current Year:</strong> 1st Year</p>
+                    <p><strong>Focus Areas:</strong> English Literature, Composition, Educational Pedagogy</p>
+                    <p>Building comprehensive knowledge in literature, language arts, and effective teaching methodologies to prepare for a career in secondary education.</p>
+                </div>
+                <div class="education-card">
+                    <h3>Core Subjects</h3>
+                    <p class="school">In Progress</p>
+                    <p><strong>English Literature:</strong> Analyzing diverse literary works</p>
+                    <p><strong>Composition & Rhetoric:</strong> Developing communication skills</p>
+                    <p><strong>Education Theory:</strong> Understanding pedagogical approaches</p>
+                </div>
+                <div class="education-card">
+                    <h3>Continuous Learning</h3>
+                    <p class="school">Commitment to Growth</p>
+                    <p>Actively engaging with contemporary educational practices in language teaching.</p>
+                    <p>Reading widely across genres to develop comprehensive understanding of literature.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <p class="subtitle">Competencies</p>
+            <h2>Skills & Strengths</h2>
+            <div class="section-divider"></div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Language & Communication</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">English (Native)</li>
+                        <li class="skill-item">Written Communication</li>
+                        <li class="skill-item">Public Speaking</li>
+                        <li class="skill-item">Literary Analysis</li>
+                        <li class="skill-item">Grammar & Syntax</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Academic Strengths</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">Research Writing</li>
+                        <li class="skill-item">Critical Thinking</li>
+                        <li class="skill-item">Textual Interpretation</li>
+                        <li class="skill-item">Curriculum Design</li>
+                        <li class="skill-item">Collaboration</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Teaching & Pedagogy</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">Lesson Planning</li>
+                        <li class="skill-item">Student Engagement</li>
+                        <li class="skill-item">Feedback Delivery</li>
+                        <li class="skill-item">Classroom Management</li>
+                        <li class="skill-item">Adaptive Learning</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Personal Attributes</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">Empathy</li>
+                        <li class="skill-item">Creativity</li>
+                        <li class="skill-item">Adaptability</li>
+                        <li class="skill-item">Patience</li>
+                        <li class="skill-item">Lifelong Learner</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="philosophy">
+        <div class="container">
+            <p class="subtitle">Vision</p>
+            <h2>Teaching Philosophy</h2>
+            <div class="section-divider"></div>
+            <div class="philosophy-content">
+                <p>
+                    "To teach English is not merely to instruct students on grammar rules and vocabulary, but to offer them a key to understanding human experiences, cultures, and diverse perspectives. Literature is a mirror that reflects our world and a window that shows us others."
+                </p>
+                <p>
+                    As a future educator, my mission is to create an interactive environment where students don't just memorize texts, but learn to critique, appreciate, and actively engage with the stories that shape our society.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <p class="subtitle">Connect</p>
+                <h2>Get In Touch</h2>
+                <div class="section-divider" style="margin: 1rem auto 2rem auto;"></div>
+                <p>I would love to connect with fellow educators, literature enthusiasts, and peers. Feel free to reach out!</p>
+                <div class="contact-links">
+                    <a href="mailto:joyceandrea.sayson@example.com" class="contact-link">📧 Email Me</a>
+                    <a href="#" class="contact-link">🔗 LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Joyce Andrea C. Sayson. All Rights Reserved. Designed with 💕 for Education.</p>
+    </footer>
+
+    <div id="memoryModal" class="modal" onclick="closeModalOnOutsideClick(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-header">
+                <h2 id="modalTitle">Memory Title</h2>
+                <span id="modalTag" class="tag">Category</span>
+            </div>
+            
+            <div class="modal-slider-container">
+                <button class="modal-slider-btn prev" id="modalSliderPrev" aria-label="Previous slide">&#10094;</button>
+                <button class="modal-slider-btn next" id="modalSliderNext" aria-label="Next slide">&#10095;</button>
+                
+                <div class="modal-slider-track-wrapper">
+                    <div class="modal-slider-track" id="modalSliderTrack">
+                        </div>
+                </div>
+                
+                <div class="modal-slider-dots" id="modalSliderDots"></div>
+            </div>
+
+            <div id="modalBody" class="modal-text">
+                </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Gallery Main Carousel Logic ---
+        const track = document.getElementById('galleryTrack');
+        const prevBtn = document.getElementById('galleryPrev');
+        const nextBtn = document.getElementById('galleryNext');
+        const dotsContainer = document.getElementById('galleryDots');
+        const items = Array.from(track.children);
+        
+        let currentIndex = 0;
+
+        function getItemsPerView() {
+            if (window.innerWidth <= 460) return 1;
+            if (window.innerWidth <= 700) return 2;
+            if (window.innerWidth <= 1024) return 3;
+            return 5;
+        }
+
+        function updateCarousel() {
+            const itemsPerView = getItemsPerView();
+            const maxIndex = Math.max(0, items.length - itemsPerView);
+            
+            if (currentIndex > maxIndex) currentIndex = maxIndex;
+
+            const itemWidth = items[0].getBoundingClientRect().width;
+            const gap = parseFloat(window.getComputedStyle(track).gap) || 0;
+            const amountToMove = currentIndex * (itemWidth + gap);
+
+            track.style.transform = `translateX(-${amountToMove}px)`;
+
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex >= maxIndex;
+
+            const totalDots = maxIndex + 1;
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalDots; i++) {
+                const dot = document.createElement('button');
+                dot.classList.add('gallery-dot');
+                if (i === currentIndex) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    currentIndex = i;
+                    updateCarousel();
+                });
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            const itemsPerView = getItemsPerView();
+            if (currentIndex < items.length - itemsPerView) {
+                currentIndex++;
+                updateCarousel();
+            }
+        });
+
+        window.addEventListener('resize', updateCarousel);
+        setTimeout(updateCarousel, 100);
+
+        // --- Modal Data Configured with 5 Slides & Text Per Slide Everywhere ---
+        const memoryData = {
+            childhood: {
+                title: "Childhood Days",
+                tag: "Matanao Roots",
+                images: [
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23FFB6D9' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23fff' text-anchor='middle'%3EChildhood Photo 1%3C/text%3E%3C/svg%3E",
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23FFD4E5' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%235A4A6E' text-anchor='middle'%3EChildhood Photo 2%3C/text%3E%3C/svg%3E",
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23FFF0F5' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23DB3A70' text-anchor='middle'%3EChildhood Photo 3%3C/text%3E%3C/svg%3E",
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23DDA0DD' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23fff' text-anchor='middle'%3EChildhood Photo 4%3C/text%3E%3C/svg%3E",
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23FF69B4' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23fff' text-anchor='middle'%3EChildhood Photo 5%3C/text%3E%3C/svg%3E"
+                ],
+                texts: [
+                    "<p><strong>Childhood Slide 1:</strong> Growing up in <strong>Matanao, Davao del Sur</strong> filled my earliest years with beautiful landscapes and simple, joyful communities.</p>",
+                    "<p><strong>Childhood Slide 2:</strong> Being the youngest of two siblings, I was always surrounded by care, love, and protection from my family.</p>",
+                    "<p><strong>Childhood Slide 3:</strong> I let my imagination roam freely, often getting lost playing out in nature and looking at the bright skies.</p>",
+                    "<p><strong>Childhood Slide 4:</strong> Early games and activities sparked my curiosity and taught me how to creatively engage with my surroundings.</p>",
+                    "<p><strong>Childhood Slide 5:</strong> Even as a young kid, I discovered a fascination with storybooks and narratives, which planted the seeds of my future goals.</p>"
+                ]
+            },
+            growing: {
+                title: "Growing Up",
+                tag: "Milestones",
+                images: [
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23DDA0DD' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23fff' text-anchor='middle'%3EGrowing Up Photo 1%3C/text%3E%3C/svg%3E",
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23FFB6D9' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23fff' text-anchor='middle'%3EGrowing Up Photo 2%3C/text%3E%3C/svg%3E",
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23FFF0F5' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23DB3A70' text-anchor='middle'%3EGrowing Up Photo 3%3C/text%3E%3C/svg%3E",
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23FFD4E5' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%235A4A6E' text-anchor='middle'%3EGrowing Up Photo 4%3C/text%3E%3C/svg%3E",
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23FF69B4' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23fff' text-anchor='middle'%3EGrowing Up Photo 5%3C/text%3E%3C/svg%3E"
+                ],
+                texts: [
+                    "<p><strong>Growing Up Slide 1:</strong> School years built the foundation of who I am today, navigating changes and building strong friendships.</p>",
+                    "<p><strong>Growing Up Slide 2:</strong> Stepping into high school helped me realize that language and expression are our most powerful tools for connection.</p>",
+                    "<p><strong>Growing Up Slide 3:</strong> Exploring group activities helped build confidence and a sense of shared purpose among friends.</p>",
+                    "<p><strong>Growing Up Slide 4:</strong> I learned the importance of perseverance during demanding academic periods and personal milestones.</p>",
+                    "<p><strong>Growing Up Slide 5:</strong> Every step taken during these intermediate years prepared my mindset for bigger collegiate ambitions.</p>"
+                ]
+            },
+            academic: {
+                title: "Academic Journey",
+                tag: "Achievements",
+                images: [
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23FFD4E5' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%235A4A6E' text-anchor='middle'%3EAcademic Photo 1%3C/text%3E%3C/svg%3E",
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23FFF0F5' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23DB3A70' text-anchor='middle'%3EAcademic Photo 2%3C/text%3E%3C/svg%3E",
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23FFB6D9' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23fff' text-anchor='middle'%3EAcademic Photo 3%3C/text%3E%3C/svg%3E",
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23DDA0DD' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23fff' text-anchor='middle'%3EAcademic Photo 4%3C/text%3E%3C/svg%3E",
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23FF69B4' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23fff' text-anchor='middle'%3EAcademic Photo 5%3C/text%3E%3C/svg%3E"
+                ],
+                texts: [
+                    "<p><strong>Academic Slide 1:</strong> Hard work and persistent curiosity guided me. Every essay written brought me closer to discovering my calling.</p>",
+                    "<p><strong>Academic Slide 2:</strong> Honoring early achievements proved that dedication to assignments can pay off inside and outside classrooms.</p>",
+                    "<p><strong>Academic Slide 3:</strong> Learning to effectively conduct research sharpened my critical thinking skills across complex subjects.</p>",
+                    "<p><strong>Academic Slide 4:</strong> Collaborative projects allowed me to appreciate diverse student opinions and develop interactive leadership skills.</p>",
+                    "<p><strong>Academic Slide 5:</strong> Graduating key educational stages with honors reinforced my lifetime love for secondary education tracks.</p>"
+                ]
+            },
+            learning: {
+                title: "Love of Learning",
+                tag: "Passions",
+                images: [
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23FFB6D9' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23fff' text-anchor='middle'%3ELearning Photo 1%3C/text%3E%3C/svg%3E",
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23FFD4E5' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%235A4A6E' text-anchor='middle'%3ELearning Photo 2%3C/text%3E%3C/svg%3E",
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23FFF0F5' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23DB3A70' text-anchor='middle'%3ELearning Photo 3%3C/text%3E%3C/svg%3E",
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23DDA0DD' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23fff' text-anchor='middle'%3ELearning Photo 4%3C/text%3E%3C/svg%3E",
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23FF69B4' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23fff' text-anchor='middle'%3ELearning Photo 5%3C/text%3E%3C/svg%3E"
+                ],
+                texts: [
+                    "<p><strong>Learning Slide 1:</strong> Literature is a window to human empathy. My love for learning spans across parsing creative stories.</p>",
+                    "<p><strong>Learning Slide 2:</strong> Diving deep into grammar rules unlocked an appreciation for structure, syntax, and expressive clarity.</p>",
+                    "<p><strong>Learning Slide 3:</strong> Books became companions, expanding global perspectives far beyond physical municipal borders.</p>",
+                    "<p><strong>Learning Slide 4:</strong> Exploring creative writing formats allowed me to articulate internal thoughts into organized, moving pieces.</p>",
+                    "<p><strong>Learning Slide 5:</strong> I aim to continuously gather strategies to pass this absolute joy of reading down to future high school students.</p>"
+                ]
+            },
+            college: {
+                title: "College Days",
+                tag: "The New Chapter",
+                images: [
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23FFF0F5' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23DB3A70' text-anchor='middle'%3ECollege Photo 1%3C/text%3E%3C/svg%3E",
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23FFD4E5' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%235A4A6E' text-anchor='middle'%3ECollege Photo 2%3C/text%3E%3C/svg%3E",
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23FFB6D9' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23fff' text-anchor='middle'%3ECollege Photo 3%3C/text%3E%3C/svg%3E",
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23DDA0DD' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23fff' text-anchor='middle'%3ECollege Photo 4%3C/text%3E%3C/svg%3E",
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23FF69B4' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23fff' text-anchor='middle'%3ECollege Photo 5%3C/text%3E%3C/svg%3E"
+                ],
+                texts: [
+                    "<p><strong>College Slide 1:</strong> Stepping into my 1st year as a <strong>BSED English</strong> student confirms that I am exactly where I belong.</p>",
+                    "<p><strong>College Slide 2:</strong> Adjusting to active university routines expanded my academic workload and elevated my analytical thresholds.</p>",
+                    "<p><strong>College Slide 3:</strong> Interacting with professional education professors introduced me to advanced, foundational pedagogical frameworks.</p>",
+                    "<p><strong>College Slide 4:</strong> Making connections with fellow English majors has provided an incredibly warm, inspiring support group.</p>",
+                    "<p><strong>College Slide 5:</strong> Every lecture attended and plan mapped out moves me closer to becoming an effective, fully-certified educator.</p>"
+                ]
+            },
+            family: {
+                title: "Family",
+                tag: "My Foundation",
+                images: [
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23FF69B4' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23fff' text-anchor='middle'%3EFamily Photo 1%3C/text%3E%3C/svg%3E",
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23FFD4E5' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%235A4A6E' text-anchor='middle'%3EFamily Photo 2%3C/text%3E%3C/svg%3E",
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23FFF0F5' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23DB3A70' text-anchor='middle'%3EFamily Photo 3%3C/text%3E%3C/svg%3E",
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23FFB6D9' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23fff' text-anchor='middle'%3EFamily Photo 4%3C/text%3E%3C/svg%3E",
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23DDA0DD' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23fff' text-anchor='middle'%3EFamily Photo 5%3C/text%3E%3C/svg%3E"
+                ],
+                texts: [
+                    "<p><strong>Family Slide 1:</strong> With my older sister tackling university life alongside me, our home is a constant sanctuary of mutual encouragement.</p>",
+                    "<p><strong>Family Slide 2:</strong> Our close-knit family of four keeps me thoroughly grounded, emphasizing core values and constant respect.</p>",
+                    "<p><strong>Family Slide 3:</strong> Celebrating minor holidays and academic achievements together makes every single milestone completely unforgettable.</p>",
+                    "<p><strong>Family Slide 4:</strong> My parents' unyielding support fuels my daily drive to overcome complex study modules and high goals.</p>",
+                    "<p><strong>Family Slide 5:</strong> No matter where my professional training or future teaching career leads me, family remains my permanent anchor.</p>"
+                ]
+            }
+        };
+
+        // --- Modal Active Tracking Key and State ---
+        let activeModalKey = "";
+        let currentModalImageIndex = 0;
+        let totalModalImages = 0;
+
+        function openModal(key) {
+            const modal = document.getElementById('memoryModal');
+            const data = memoryData[key];
+            if (!data) return;
+
+            activeModalKey = key; 
+            document.getElementById('modalTitle').innerText = data.title;
+            document.getElementById('modalTag').innerText = data.tag;
+
+            const track = document.getElementById('modalSliderTrack');
+            const dotsContainer = document.getElementById('modalSliderDots');
+            
+            track.innerHTML = '';
+            dotsContainer.innerHTML = '';
+            currentModalImageIndex = 0;
+            totalModalImages = data.images.length;
+
+            data.images.forEach((imgUrl, idx) => {
+                const slide = document.createElement('div');
+                slide.classList.add('modal-slide');
+                slide.innerHTML = `<img src="${imgUrl}" alt="${data.title} slide ${idx + 1}">`;
+                track.appendChild(slide);
+
+                const dot = document.createElement('button');
+                dot.classList.add('modal-slider-dot');
+                if (idx === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => jumpToModalSlide(idx));
+                dotsContainer.appendChild(dot);
+            });
+
+            track.style.transform = `translateX(0px)`;
+            updateModalText(); 
+            
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function updateModalText() {
+            const data = memoryData[activeModalKey];
+            const textContainer = document.getElementById('modalBody');
+            if (data && data.texts && data.texts[currentModalImageIndex]) {
+                textContainer.innerHTML = data.texts[currentModalImageIndex];
+            } else {
+                textContainer.innerHTML = "";
+            }
+        }
+
+        function updateModalSlider() {
+            const track = document.getElementById('modalSliderTrack');
+            const amountToMove = currentModalImageIndex * 100;
+            track.style.transform = `translateX(-${amountToMove}%)`;
+
+            const dots = document.getElementById('modalSliderDots').children;
+            Array.from(dots).forEach((dot, idx) => {
+                if (idx === currentModalImageIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+
+            updateModalText(); 
+        }
+
+        function jumpToModalSlide(index) {
+            currentModalImageIndex = index;
+            updateModalSlider();
+        }
+
+        document.getElementById('modalSliderPrev').addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentModalImageIndex > 0) {
+                currentModalImageIndex--;
+            } else {
+                currentModalImageIndex = totalModalImages - 1;
+            }
+            updateModalSlider();
+        });
+
+        document.getElementById('modalSliderNext').addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentModalImageIndex < totalModalImages - 1) {
+                currentModalImageIndex++;
+            } else {
+                currentModalImageIndex = 0;
+            }
+            updateModalSlider();
+        });
+
+        function closeModal() {
+            const modal = document.getElementById('memoryModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        function closeModalOnOutsideClick(event) {
+            if (event.target.id === 'memoryModal') {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
